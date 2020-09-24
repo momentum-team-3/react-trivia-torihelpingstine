@@ -41,7 +41,9 @@ class App extends React.Component {
     } else {
       body = (
         <div>
-          <h1>Trivia</h1>
+          <h1> <u>Trivia Game</u>
+            <p> Choose a category and play a game with 10 questions!</p>
+          </h1>
           <ul>
             {categories.map(category => (
               <li key={category.id}>

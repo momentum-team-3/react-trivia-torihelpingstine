@@ -12,16 +12,16 @@ function Question ({ question, onAnswer }) {
       <div>
         <h2 dangerouslySetInnerHTML={{ __html: question.question }} />
       </div>
-    
       <ul>
         {answers.map(answer => (
           <li key={answer}>
             <button 
               onClick={() => onAnswer(answer === question.correct_answer)}
-              dangerouslySetInnerHTML={{ __html: answer }} />              
+              dangerouslySetInnerHTML={{ __html: answer }} />
           </li>
         ))}
       </ul>
+       {/* <div> onAnswer  </div> */}
     </div>
   )
 }
