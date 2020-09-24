@@ -7,3 +7,8 @@ export function shuffleArray (array) {
   }
   return array
 }
+
+export function randomLightColor () {
+  const hue = Math.floor(Math.random() * 360) + 1
+  return 'hsl(' + hue + ', 100%, 80%)'
+}

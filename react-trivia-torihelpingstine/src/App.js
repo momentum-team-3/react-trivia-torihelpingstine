@@ -2,6 +2,7 @@
 import React from 'react'
 import './App.css'
 import TriviaQuiz from './components/TriviaQuiz'
+import { randomLightColor } from './utils'
 
 // TODO Look at classnames library and try it out
 
@@ -41,13 +42,19 @@ class App extends React.Component {
     } else {
       body = (
         <div>
-          <h1> <u>Trivia Game</u>
+          <h1> 
+            <u>Trivia Game</u>
             <p> Choose a category and play a game with 10 questions!</p>
           </h1>
-          <ul>
+          <ul className="category-list">
             {categories.map(category => (
               <li key={category.id}>
-                <button onClick={() => this.setState({ selectedCategory: category })}>{category.name}</button>
+                <button 
+                  style={{ backgroundColor: randomLightColor() }}
+                  onClick={() => this.setState({ selectedCategory: category })}
+                >
+                  {category.name}
+                </button>
               </li>
             ))}
           </ul>
