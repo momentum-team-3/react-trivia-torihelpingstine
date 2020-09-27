@@ -16,7 +16,11 @@ class TriviaQuiz extends React.Component {
   }
 
   componentDidMount () {
-    fetch('https://opentdb.com/api.php?amount=10&category=' + this.props.category.id)
+    let url = 'https://opentdb.com/api.php?amount=' + this.props.questions + '&category=' + this.props.category.id
+    if (this.props.difficulty !== 'any') {
+      url += '&difficulty=' + this.props.difficulty
+    }
+    fetch(url)
       .then(response => response.json())
       .then(data => {
         this.setState({ questions: data.results, loading: false })
@@ -34,24 +38,24 @@ class TriviaQuiz extends React.Component {
     }
     let displayQuestionEval
     if (currentQuestionCorrect === true) {
-      displayQuestionEval = <p> Last answer was Correct! A point was added to your score</p>
+      displayQuestionEval = <p className='correctDisplay'> Previous answer was correct! </p>
     } else if (currentQuestionCorrect === false) {
-      displayQuestionEval = <p> Last answer was wrong, correct answer was {questions[currentQuestionIdx - 1].correct_answer}</p>
+      displayQuestionEval = <p className='wrongDisplay'> Previous answer was wrong, the correct answer was <a className='rightAnswer'> {questions[currentQuestionIdx - 1].correct_answer}</a></p>
     }
 
     if (isDone) {
       return (
         <div className='TriviaQuiz'>
           <h1>{category.name}</h1>
-          <h2>Your final score was {score}/{questions.length}.</h2>
+          <h2>Your final score is {score}/{questions.length}.</h2>
         </div>
       )
     }
 
     return (
       <div className='TriviaQuiz'>
-        <h1>{category.name}</h1>
-        <h2>Score: {score}</h2>
+        <h1>{category.name} </h1>
+        <div> {displayQuestionEval} </div>
         <Question
           question={currentQuestion}
           onAnswer={(correct) => {
@@ -71,7 +75,7 @@ class TriviaQuiz extends React.Component {
             }
           }}
         />
-        {displayQuestionEval}
+        <h2> Score: {score}</h2>
       </div>
     )
   }

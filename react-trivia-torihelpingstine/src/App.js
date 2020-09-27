@@ -4,14 +4,14 @@ import './App.css'
 import TriviaQuiz from './components/TriviaQuiz'
 import { randomLightColor } from './utils'
 
-// TODO Look at classnames library and try it out
-
 class App extends React.Component {
   constructor () {
     super()
     this.state = {
       selectedCategory: null,
-      categories: []
+      categories: [],
+      difficulty: 'any',
+      questions: 10
     }
   }
 
@@ -23,6 +23,10 @@ class App extends React.Component {
       })
   }
 
+  clearSelectedCategory () {
+    this.setState({ selectedCategory: null })
+  }
+
   render () {
     const categories = this.state.categories
     let body
@@ -30,10 +34,15 @@ class App extends React.Component {
       body = (
         <div>
           <TriviaQuiz
+            questions={this.state.questions}
+            difficulty={this.state.difficulty}
             category={this.state.selectedCategory}
           />
           <p>
-            <button onClick={() => this.setState({ selectedCategory: null })}>
+            <button
+              className='backCats'
+              onClick={() => this.clearSelectedCategory()}
+            >
             Back to categories
             </button>
           </p>
@@ -42,14 +51,30 @@ class App extends React.Component {
     } else {
       body = (
         <div>
-          <h1> 
-            <u>Trivia Game</u>
-            <p> Choose a category and play a game with 10 questions!</p>
+          <h1>
+            <u>Trivia Game!</u>
+            <p> Choose a Category to Play</p>
           </h1>
-          <ul className="category-list">
+          <p>
+            Select difficulty:
+            <select
+              onChange={(event) => { this.setState({ difficulty: event.target.value }) }} value={this.state.difficulty}
+            >
+              <option value='any'>Any difficulty</option>
+              <option value='easy'>Easy</option>
+              <option value='medium'>Medium</option>
+              <option value='hard'>Hard</option>
+            </select>
+          </p>
+          <p>
+            Number of questions:
+            <input type='number' min='5' max='40' onChange={(event) => { this.setState({ questions: event.target.value }) }} value={this.state.questions} />
+
+          </p>
+          <ul className='category-list'>
             {categories.map(category => (
               <li key={category.id}>
-                <button 
+                <button
                   style={{ backgroundColor: randomLightColor() }}
                   onClick={() => this.setState({ selectedCategory: category })}
                 >

@@ -1,5 +1,5 @@
 import React from 'react'
-import { shuffleArray } from '../utils'
+import { randomLightColor, shuffleArray } from '../utils'
 
 function Question ({ question, onAnswer }) {
   let answers = []
@@ -12,16 +12,16 @@ function Question ({ question, onAnswer }) {
       <div>
         <h2 dangerouslySetInnerHTML={{ __html: question.question }} />
       </div>
-      <ul>
+      <ul className='answer-list'>
         {answers.map(answer => (
           <li key={answer}>
-            <button 
+            <button
+              style={{ backgroundColor: randomLightColor() }}
               onClick={() => onAnswer(answer === question.correct_answer)}
               dangerouslySetInnerHTML={{ __html: answer }} />
           </li>
         ))}
       </ul>
-       {/* <div> onAnswer  </div> */}
     </div>
   )
 }

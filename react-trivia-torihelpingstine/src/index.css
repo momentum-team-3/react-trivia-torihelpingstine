@@ -49,3 +49,79 @@ code {
   cursor: pointer;
   background-color: #DDD;
 }
+
+.Qustion {
+  max-width: 60rem;
+  margin: 2rem auto;
+}
+
+.answer-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.answer-list li {
+  height: 120px;
+}
+
+.answer-list button {
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.answer-list button:hover {
+  cursor: pointer;
+  background-color: #DDD;
+}
+
+.answer-list li:hover {
+  border: 5px solid white;  
+}
+
+.correctDisplay {
+  text-align: center;
+  color: darkgreen;
+  background-color: lightgreen;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.wrongDisplay {
+  text-align: center;
+  color: darkred;
+  background-color: lightcoral;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.rightAnswer {
+  color: azure;
+  font-size: large;
+}
+
+.backCats {
+  font-family: 'Kumbh Sans', sans-serif;
+  border: lightslategray;
+  padding: white;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 1rem 2rem;
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+
+}
+.backCats button.hover {
+  background-color: #DDD;
+}
+
+.Question {
+  padding: 2rem;
+}
