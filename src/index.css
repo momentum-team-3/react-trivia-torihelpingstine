@@ -118,10 +118,19 @@ code {
   cursor: pointer;
 
 }
-.backCats button.hover {
+.backCats:hover {
   background-color: #DDD;
 }
 
 .Question {
   padding: 2rem;
+}
+
+.game-options {
+  display: flex;
+}
+
+.game-options .option {
+  padding: 2rem 2rem 2rem 0;
+
 }

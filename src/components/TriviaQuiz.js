@@ -12,7 +12,7 @@ class TriviaQuiz extends React.Component {
       score: 0,
       loading: true,
       currentQuestionCorrect: null
-    }    
+    }
   }
 
   componentDidMount () {

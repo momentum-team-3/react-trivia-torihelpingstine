@@ -55,22 +55,24 @@ class App extends React.Component {
             <u>Trivia Game!</u>
             <p> Choose a Category to Play</p>
           </h1>
-          <p>
-            Select difficulty:
-            <select
-              onChange={(event) => { this.setState({ difficulty: event.target.value }) }} value={this.state.difficulty}
-            >
-              <option value='any'>Any difficulty</option>
-              <option value='easy'>Easy</option>
-              <option value='medium'>Medium</option>
-              <option value='hard'>Hard</option>
-            </select>
-          </p>
-          <p>
-            Number of questions:
-            <input type='number' min='5' max='40' onChange={(event) => { this.setState({ questions: event.target.value }) }} value={this.state.questions} />
+          <div className="game-options">
+            <div className="option">
+              <label>Select difficulty:</label>
+              <select
+                onChange={(event) => { this.setState({ difficulty: event.target.value }) }} value={this.state.difficulty}
+              >
+                <option value='any'>Any difficulty</option>
+                <option value='easy'>Easy</option>
+                <option value='medium'>Medium</option>
+                <option value='hard'>Hard</option>
+              </select>
+            </div>
+            <div className="option">
+              Number of questions:
+              <input type='number' min='5' max='40' onChange={(event) => { this.setState({ questions: event.target.value }) }} value={this.state.questions} />
 
-          </p>
+            </div>
+          </div>
           <ul className='category-list'>
             {categories.map(category => (
               <li key={category.id}>
