@@ -12,7 +12,7 @@ class TriviaQuiz extends React.Component {
       score: 0,
       loading: true,
       currentQuestionCorrect: null
-    }
+    }    
   }
 
   componentDidMount () {
@@ -38,9 +38,9 @@ class TriviaQuiz extends React.Component {
     }
     let displayQuestionEval
     if (currentQuestionCorrect === true) {
-      displayQuestionEval = <p className='correctDisplay'> Previous answer was correct! </p>
+      displayQuestionEval = <p className='correctDisplay'> Answer was correct! </p>
     } else if (currentQuestionCorrect === false) {
-      displayQuestionEval = <p className='wrongDisplay'> Previous answer was wrong, the correct answer was <a className='rightAnswer'> {questions[currentQuestionIdx - 1].correct_answer}</a></p>
+      displayQuestionEval = <p className='wrongDisplay'> Answer was wrong, the correct answer was <span className='rightAnswer'> {questions[currentQuestionIdx].correct_answer}</span></p>
     }
 
     if (isDone) {
@@ -59,23 +59,33 @@ class TriviaQuiz extends React.Component {
         <Question
           question={currentQuestion}
           onAnswer={(correct) => {
+            if (this.state.answered) {
+              return
+            }
             if (correct) {
               this.setState({
-                score: score + 1,
-                currentQuestionIdx: currentQuestionIdx + 1,
+                score: this.state.score + 1,
+                answered: true,
                 lastQuestionCorrect: true,
                 currentQuestionCorrect: true
-
               })
             } else {
               this.setState({
-                currentQuestionIdx: currentQuestionIdx + 1,
+                answered: true,
                 currentQuestionCorrect: false
               })
             }
           }}
         />
         <h2> Score: {score}</h2>
+        {this.state.answered && (
+          <button onClick={() => {
+            this.setState({ 
+              currentQuestionIdx: currentQuestionIdx + 1, 
+              currentQuestionCorrect: null,
+              answered: false
+            })}
+          }>Next</button>)}
       </div>
     )
   }
