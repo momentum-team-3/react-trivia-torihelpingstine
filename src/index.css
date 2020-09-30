@@ -134,3 +134,27 @@ code {
   padding: 2rem 2rem 2rem 0;
 
 }
+.next {
+  font-family: 'Kumbh Sans', sans-serif;
+  border: lightslategray;
+  padding: white;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 1rem 2rem;
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+
+}
+.next:hover {
+  background-color: #DDD;
+}
+.TriviaQuiz {
+  text-align: center;
+  font-size: 30px;
+}
+
+.quiz-buttons {
+  display: flex;
+  justify-content: space-between;
+}

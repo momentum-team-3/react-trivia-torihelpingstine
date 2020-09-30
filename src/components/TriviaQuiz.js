@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Question from './Question'
+import Confetti from 'react-confetti'
 
 class TriviaQuiz extends React.Component {
   constructor () {
@@ -38,14 +39,15 @@ class TriviaQuiz extends React.Component {
     }
     let displayQuestionEval
     if (currentQuestionCorrect === true) {
-      displayQuestionEval = <p className='correctDisplay'> Answer was correct! </p>
+      displayQuestionEval = <p className='correctDisplay'> Correct! </p>
     } else if (currentQuestionCorrect === false) {
-      displayQuestionEval = <p className='wrongDisplay'> Answer was wrong, the correct answer was <span className='rightAnswer'> {questions[currentQuestionIdx].correct_answer}</span></p>
+      displayQuestionEval = <p className='wrongDisplay'> Wrong, the correct answer was <span className='rightAnswer'> {questions[currentQuestionIdx].correct_answer}</span></p>
     }
 
     if (isDone) {
       return (
         <div className='TriviaQuiz'>
+          <Confetti />
           <h1>{category.name}</h1>
           <h2>Your final score is {score}/{questions.length}.</h2>
         </div>
@@ -53,7 +55,7 @@ class TriviaQuiz extends React.Component {
     }
 
     return (
-      <div className='TriviaQuiz'>
+      <div className='TriviaQuestion'>
         <h1>{category.name} </h1>
         <div> {displayQuestionEval} </div>
         <Question
@@ -78,14 +80,27 @@ class TriviaQuiz extends React.Component {
           }}
         />
         <h2> Score: {score}</h2>
-        {this.state.answered && (
-          <button onClick={() => {
-            this.setState({ 
-              currentQuestionIdx: currentQuestionIdx + 1, 
-              currentQuestionCorrect: null,
-              answered: false
-            })}
-          }>Next</button>)}
+        <div className='quiz-buttons'>
+          <button
+            disabled={!this.state.answered}
+            className='next'
+            onClick={() => {
+              this.setState({
+                currentQuestionIdx: currentQuestionIdx + 1,
+                currentQuestionCorrect: null,
+                answered: false
+              })
+            }}
+          >
+            Next Question
+          </button>
+          <button
+            className='backCats'
+            onClick={this.props.handleBackToCategories}>
+              Back to Categories
+          </button>
+        </div>
+
       </div>
     )
   }

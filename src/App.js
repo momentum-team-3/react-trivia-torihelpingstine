@@ -37,15 +37,8 @@ class App extends React.Component {
             questions={this.state.questions}
             difficulty={this.state.difficulty}
             category={this.state.selectedCategory}
+            handleBackToCategories={() => this.clearSelectedCategory()}
           />
-          <p>
-            <button
-              className='backCats'
-              onClick={() => this.clearSelectedCategory()}
-            >
-            Back to categories
-            </button>
-          </p>
         </div>
       )
     } else {
