@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  max-width: 60rem;
+  margin: 2rem auto;
+}
+
+.category-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.category-list li {
+  height: 120px;
+}
+
+.category-list li:hover {
+  border: 5px solid white;  
+}
+
+.category-list button {
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+  padding: 2rem 4rem;
+  width: 100%;
+  height: 100%;
+}
+
+.category-list button:hover {
+  cursor: pointer;
+  background-color: #DDD;
+}
+
+.Qustion {
+  max-width: 60rem;
+  margin: 2rem auto;
+}
+
+.answer-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.answer-list li {
+  height: 120px;
+}
+
+.answer-list button {
+  font-family: 'Kumbh Sans', sans-serif;
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+.answer-list button:hover {
+  cursor: pointer;
+  background-color: #DDD;
+}
+
+.answer-list li:hover {
+  border: 5px solid white;  
+}
+
+.correctDisplay {
+  text-align: center;
+  color: darkgreen;
+  background-color: lightgreen;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.wrongDisplay {
+  text-align: center;
+  color: darkred;
+  background-color: lightcoral;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+.rightAnswer {
+  color: azure;
+  font-size: large;
+}
+
+.backCats {
+  font-family: 'Kumbh Sans', sans-serif;
+  border: lightslategray;
+  padding: white;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 1rem 2rem;
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+
+}
+.backCats:hover {
+  background-color: #DDD;
+}
+
+.Question {
+  padding: 2rem;
+}
+
+.game-options {
+  display: flex;
+}
+
+.game-options .option {
+  padding: 2rem 2rem 2rem 0;
+
+}
+.next {
+  font-family: 'Kumbh Sans', sans-serif;
+  border: lightslategray;
+  padding: white;
+  font-size: 1rem;
+  font-weight: 100;
+  padding: 1rem 2rem;
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+
+}
+.next:hover {
+  background-color: #DDD;
+}
+.TriviaQuiz {
+  text-align: center;
+  font-size: 30px;
+}
+
+.quiz-buttons {
+  display: flex;
+  justify-content: space-between;
+}
